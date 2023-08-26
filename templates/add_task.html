@@ -1,0 +1,17 @@
+<head>
+    <title>Add Task</title>
+</head>
+<body>
+    <h1>Add a New Task</h1>
+    <form method="post" action="{% url 'addtask' %}">
+        {% csrf_token %}
+        <label for="task_reason">Task Reason:</label>
+        <input type="text" id="task_reason" name="task_reason" required><br><br>
+        
+        {% comment %} <label for="task_step">Due Date:</label>
+        <input type="date" id="task_step" name="task_step" required><br><br>
+         {% endcomment %}
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+</html>task_reason
