@@ -11,4 +11,3 @@ class task(models.Model):
     task_reason =models.CharField(max_length=200)
     task_step = models.CharField(max_length=50,choices=GENRE_CHOICES)
     created_date = models.DateTimeField(auto_now_add=True)
-    # task_date = models.DateField
