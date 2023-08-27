@@ -20,6 +20,9 @@ from shantiinfo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.task_list,name="addtask"),
-    # path('add-task/', views.add_task,name="addtask"),
+    path('', views.task_list),
+    path('add-task/', views.add_task,name="addtask"),    
+    path('<int:pk>/delete/', views.delete_record, name='delete_record'),
+
+
 ]
