@@ -25,9 +25,10 @@
     
         <div class="mt-5">
             <nav class="navbar navbar-light bg-white justify-content-between ">
+                <form class="form-inline" method="GET">
             <input class="form-control form-control2 mr-sm-2" name = "serch_d" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success custom-search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-          
+                </form>
           <a class="navbar-brand"><button type="button" class="btn btn-primary btn-custom" data-toggle="modal" data-target="#exampleModalCenter">
             <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add Task </button></a>
           
@@ -39,22 +40,28 @@
                     <div class="bg-custom">
                     <h6>STEP 1</h6  >
                         {% for i in title %}
-                        {% if i.task_step == "step_1"%}
+                        {% if i.task_step == "1"%}
                         <div class="card-custom">
 
                             <div class="heading">{{forloop.counter}}</div>
                             
                             <div class="text-danger delete-icon">
-                                <button class="delete-icon"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button></div>
-                            
-                            
+                                <a href="{{i.id}}/delete/">
+                                    <button class="delete-icon" type="submit"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                    </a>
+                                </div>
+                                <br>
+                                <p>ID : {{i.id}}<br> Reason : {{i.task_reason}} <br> Date : {{i.created_date}}</p>
                             <div class="mt-5 arrow-custom">
                                 <div class="arrow-custom2">
                             <!-- <i class="fa fa-arrow-left left-custom" aria-hidden="true"></i> -->
-                            <i class="fa fa-arrow-right right-custom" aria-hidden="true"></i>
+                            {% comment %} <i class="fa fa-arrow-right right-custom" aria-hidden="true"></i> {% endcomment %}
+                            <a href="{{i.task_step}}/{{'greater'}}/{{i.id}}/update/">
+                                <i class="fa fa-arrow-right right-custom" aria-hidden="true"><button class="delete-icon" type="submit"></button></i>
+                            </a> 
+                            
                             </div>
                             </div>
-                            <div><p>{{i.id}} {{i.task_reason}} {{i.created_date}}</p></div>
                           </div>
                             {% endif %}
                             {% endfor %}
@@ -69,34 +76,29 @@
                     <div class="bg-custom">
                     <h6>STEP 2</h6  >
                         {% for i in title %}
-                        {% if i.task_step == "Step_2" %}
+                        {% if i.task_step == "2" %}
                         <div class="card-custom">
                             <div class="heading">{{forloop.counter}}</div>
                             <div class="text-danger delete-icon">
-                                <button class="delete-icon"> <i class="fa fa-trash" aria-hidden="true" ></i> Delete</button></div> 
+                                <a href="{{i.id}}/delete/">
+                                    <button class="delete-icon" type="submit"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                    </a>
+                                </div>
+                                <br>
+                                <p>ID : {{i.id}}<br> Reason : {{i.task_reason}} <br> Date : {{i.created_date}}</p>
                             <div class="mt-5 arrow-custom">
                                 <div class="arrow-custom2">
-                            <i class="fa fa-arrow-left left-custom" aria-hidden="true"></i>
-                            <i class="fa fa-arrow-right right-custom" aria-hidden="true"></i>
+                                    <a href="{{i.task_step}}/{{'greater'}}/{{i.id}}/update/">
+                                        <i class="fa fa-arrow-right right-custom" aria-hidden="true"><button class="delete-icon" type="submit"></button></i>
+                                    </a> 
+                                    <a href="{{i.task_step}}/{{'less'}}/{{i.id}}/update/">
+                                        <i class="fa fa-arrow-left left-custom" aria-hidden="true"><button class="delete-icon" type="submit"></button></i>
+                                        </a>
                             </div>
                             </div>
-                            <div><p>{{i.id}} {{i.task_reason}} {{i.created_date}}</p></div>
                           </div>
                           {% endif %}
-                          {% endfor %}
-    
-                      {% comment %} <div class="card-custom">
-                        <div class="heading">5</div>
-                        <div class="text-danger delete-icon">
-                            <button class="delete-icon"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button></div> 
-                        <div class="mt-5 arrow-custom">
-                            <div class="arrow-custom2">
-                        <i class="fa fa-arrow-left left-custom" aria-hidden="true"></i>
-                        <i class="fa fa-arrow-right right-custom" aria-hidden="true"></i>
-                        </div>
-                        </div>
-                      </div> {% endcomment %}
-                    
+                          {% endfor %}                    
                       </div>
     
                 </div>
@@ -104,18 +106,26 @@
                     <div class="bg-custom">
                     <h6>STEP 3</h6  >
                         {% for i in title %}
-                        {% if i.task_step == "step_3"%}
+                        {% if i.task_step == "3"%}
                         <div class="card-custom">
                             <div class="heading">{{forloop.counter}}</div>
                             <div class="text-danger delete-icon">
-                                <button class="delete-icon"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button></div>   
+                                <a href="{{i.id}}/delete/">
+                                    <button class="delete-icon" type="submit"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                    </a>   
+                                </div>
+                                <br>
+                                <p>ID : {{i.id}}<br> Reason : {{i.task_reason}} <br> Date : {{i.created_date}}</p>
                             <div class="mt-5 arrow-custom">
                                 <div class="arrow-custom2">
-                            <i class="fa fa-arrow-left left-custom" aria-hidden="true"></i>
-                            <i class="fa fa-arrow-right right-custom" aria-hidden="true"></i>
+                                    <a href="{{i.task_step}}/{{'greater'}}/{{i.id}}/update/">
+                                        <i class="fa fa-arrow-right right-custom" aria-hidden="true"><button class="delete-icon" type="submit"></button></i>
+                                    </a> 
+                                    <a href="{{i.task_step}}/{{'less'}}/{{i.id}}/update/">
+                                        <i class="fa fa-arrow-left left-custom" aria-hidden="true"><button class="delete-icon" type="submit"></button></i>
+                                        </a> 
                             </div>
                             </div>
-                            <div><p>{{i.id}} {{i.task_reason}} {{i.created_date}}</p></div>
                           </div>
                           {% endif %}
                           {% endfor %}
@@ -129,7 +139,7 @@
                         <div class="bg-custom">
                         <h6>STEP 4</h6  >
                             {% for i in title %}
-                        {% if i.task_step == "step_4"%}
+                        {% if i.task_step == "4"%}
                             <div class="card-custom">
                                 <div class="heading">{{forloop.counter}}</div>
                                 <div class="text-danger delete-icon">
@@ -137,13 +147,16 @@
                                     <button class="delete-icon" type="submit"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                                     </a>
                                 </div> 
+                                <br>
+                                <p>ID : {{i.id}}<br> Reason : {{i.task_reason}} <br> Date : {{i.created_date}}</p>
                                     <div class="mt-5 arrow-custom">
                                     <div class="arrow-custom2">
-                                <i class="fa fa-arrow-left left-custom" aria-hidden="true"></i>
-                                <!-- <i class="fa fa-arrow-right right-custom" aria-hidden="true"></i> -->
+                                <a href="{{i.task_step}}/{{'less'}}/{{i.id}}/update/">
+                                    <i class="fa fa-arrow-left left-custom" aria-hidden="true"><button class="delete-icon" type="submit"></button></i>
+                                </a>
                                 </div>
                                 </div>
-                                <div><p>{{i.id}} {{i.task_reason}} {{i.created_date}}</p></div>
+                                
                               </div>
                               {% endif %}
                               {% endfor %}
@@ -237,16 +250,24 @@
                 success: function(response) {
                    console.log(response)
                    Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
+                    'Done',
+                    'Your Task Is Created',
                     'success'
-                    )
-                                    },
+                    ).then((result) => {
+                        if (result.isConfirmed) {
+                          // Reload the window
+                          location.reload();
+                        }
+                      });
+                    //window.location.reload();
+                    },
+                    
                 // on error
                 error: function(response) {
                     // alert the error if any error occured
                     console.log(response.responseJSON.errors)
                 }
+                
             })
         }
 
